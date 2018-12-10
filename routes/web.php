@@ -12,3 +12,7 @@
 */
 
 Route::match(['get', 'post'], '/', 'CalcController@index')->name('index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
