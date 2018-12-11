@@ -16,3 +16,8 @@ Route::match(['get', 'post'], '/', 'CalcController@index')->name('index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'user_management', 'namespace' => 'UserManagement'], function () {
+        Route::resource('/user', 'UserController', ['as' => 'admin.user_management']);
+    });
+
