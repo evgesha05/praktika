@@ -11,13 +11,12 @@
 |
 */
 
-Route::match(['get', 'post'], '/', 'CalcController@index')->name('index');
+Route::match(['get', 'post'], '/', 'StartPageController@index')->name('index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('/report', 'ReportController', ['middleware' => 'auth']);
+Route::resource('/report/{report}/thing', 'ThingController', ['middleware' => 'auth']);
 
-Route::group(['prefix' => 'user_management', 'namespace' => 'UserManagement'], function () {
-        Route::resource('/user', 'UserController', ['as' => 'admin.user_management']);
-    });
-
+Route::get('/profile', 'ProfileController@index', ['middleware' => 'auth'])->name('profile');
+Route::post('/profile', 'ProfileController@update', ['middleware' => 'auth'])->name('profile.update');
