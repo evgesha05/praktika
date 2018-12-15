@@ -19,14 +19,13 @@
                     @if(count($things) > 0)
                         <div class="row">
                             <div class="col-md-12">
-                                    @foreach($things as $thing)
                                     <div class="card">
                                         <div class="container" style="margin-top: 5px">
-                                            <h4>{{$thing->name}}</h4>
                                         </div>
                                         <table class="table table-sm text-center">
                                             <thead class="thead-light">
                                             <tr>
+                                                <th>Название предмета</th>
                                                 <th>Количество студентов</th>
                                                 <th>«5»</th>
                                                 <th>%</th>
@@ -42,7 +41,9 @@
                                                 <th>Действия</th>
                                             </tr>
                                             </thead>
+                                            @foreach($things as $thing)
                                             <tr>
+                                                <th>{{$thing->name}}</th>
                                                 <th>{{$thing->students_count}}</th>
                                                 <th>{{$thing->five}}</th>
                                                 <th>{{$thing->five_percent}}</th>
@@ -66,10 +67,10 @@
                                                     </form>
                                                 </th>
                                             </tr>
+                                            @endforeach
                                         </table>
                                     </div>
                                         <br>
-                                    @endforeach
                             </div>
                         </div>
                     @else
